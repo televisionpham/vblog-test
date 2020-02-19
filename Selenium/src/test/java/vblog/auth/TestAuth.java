@@ -1,5 +1,6 @@
 package vblog.auth;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -29,11 +30,12 @@ public class TestAuth {
 				.get(FileReaderManager.getInstance().getConfigReader().getApplicatonUrl());
 		String email = "mot@vanpt.com";
 		String password = "123456";		
-		this.signInPage.enterEmail(email);
-		Thread.sleep(1000);
-		this.signInPage.enterPassword(password);
-		Thread.sleep(1000);
+		this.signInPage.enterEmail(email);		
+		this.signInPage.enterPassword(password);		
 		this.signInPage.clickSignIn();
-		Thread.sleep(5000);
+		Thread.sleep(2000);
+		// Should navigate to home page
+		Assert.assertEquals(this.testContext.getWebDriverManager().getDriver().getCurrentUrl(),
+				FileReaderManager.getInstance().getConfigReader().getApplicatonUrl());
 	}
 }

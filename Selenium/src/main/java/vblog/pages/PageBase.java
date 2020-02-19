@@ -7,9 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 public abstract class PageBase {
 	protected WebDriver driver;
 	
-	public PageBase(WebDriver webDriver) {
-		this.driver = webDriver;
-		PageFactory.initElements(webDriver, this);
+	public PageBase(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 	
 	protected void sendKeys(WebElement webElement, String value) {
